@@ -6,12 +6,15 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Personal CSS -->
+    <!-- Reset CSS -->
     <link rel="stylesheet" href="assets/css/reset.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Personal CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
@@ -19,17 +22,37 @@
     <div class="row">
         <div class="col-md-8">
             <div class="row" id="character-bay">
-                <div class="col-md-3 card" id="obi">
-                    <span>Obi-Wan</span>
+                <div class="col-md-3" id="obi">
+                        <div class="card">
+                            <img class="card-img-top" src="assets/images/hellothere.jpg" alt="Obi Wan Kenobi Binks Picture">
+                            <div class="card-body">
+                                <p class="card-title">Obi Wan</p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-md-3" id="jarjar">
+                    <div class="card">
+                        <img class="card-img-top" src="assets/images/jarjarbinks.jpg" alt="Jar Jar Binks Picture">
+                        <div class="card-body">
+                            <p class="card-title">Jar Jar</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3" id="mace">
-                    <span>Mace Windu</span>
+                <div class="col-md-3" id="boba">
+                    <div class="card">
+                        <img class="card-img-top" src="assets/images/boba.jpg" alt="Boba Fett Picture">
+                        <div class="card-body">
+                            <p class="card-title">Boba Fett</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-3" id="luke">
-                    <span>Luke</span>
-                </div>
-                <div class="col-md-3" id="ren">
-                    <span>Ren</span>
+                <div class="col-md-3" id="rey">
+                    <div class="card">
+                        <img class="card-img-top" src="assets/images/rey.jpg" alt="Rey Picture">
+                        <div class="card-body">
+                            <p class="card-title">Rey</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -38,14 +61,30 @@
             <h1>Star Wars RPG!</h1>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Your Character</h2>
+        </div>
+    </div>
 
     <div class="row" id="enemy-bay">
 
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Enemies Available To Attack</h2>
+        </div>
     </div>
 
     <div class="row" id="battle-bay">
 
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Defender</h2>
+        </div>
+    </div>
+
 
 
 
