@@ -2,7 +2,13 @@ p,h1,h2,h3,h4 {
     font-family: monospace;
 }
 
-.card-img-top {
+body {
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* .card-img-top {
     height: 150px;
     width: auto;
-}
+} */
