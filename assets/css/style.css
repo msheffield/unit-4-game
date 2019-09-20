@@ -21,3 +21,11 @@ h1 {
     height: 150px;
     width: auto;
 }
+
+.card-body {
+    padding: 5px;
+}
+
+.card-body p {
+    margin-bottom: 0px;
+}

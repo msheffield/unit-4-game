@@ -6,29 +6,29 @@ Star Wars RPG Javascript
 var obi = {
     id: "#obi",
     hp: 100,
-    base_ad: 1,
-    ad: 1,
+    base_ad: 5,
+    ad: 5,
 }
 
 var jarjar = {
     id: "#jarjar",
-    hp: 100,
-    base_ad: 5,
-    ad: 100,
+    hp: 50,
+    base_ad: 25,
+    ad: 25,
 }
 
 var boba = {
     id: "#boba",
-    hp: 100,
-    base_ad: 5,
-    ad: 5,
+    hp: 75,
+    base_ad: 15,
+    ad: 15,
 }
 
 var rey = {
     id: "#rey",
-    hp: 100,
-    base_ad: 5,
-    ad: 5,
+    hp: 80,
+    base_ad: 10,
+    ad: 10,
 }
 
 // ----------- FUNCTIONS -----------
@@ -44,6 +44,12 @@ function findCharByID(characters, id) {
         if (characters[i].id == id) {
             return characters[i];
         }
+    }
+}
+
+function updateHP(characters) {
+    for (let i = 0; i < characters.length; i++) {
+        $(characters[i].id + " #hp").text(characters[i].hp);
     }
 }
 
@@ -67,6 +73,7 @@ function moveChar(id) {
     else if (!battle) {
         if (id !== character.id) {
             $(id).appendTo("#defender");
+            $(id + " .card-body").css("background-color", "black")
             battle = true;
             defender = findCharByID(characters, id);
             enemies.splice((enemies.indexOf(defender)), 1);
@@ -102,9 +109,7 @@ function update() {
 
     }
 
-    for (let i = 0; i < characters.length; i++) {
-        console.log(characters[i].id + " hp = " + characters[i].hp);
-    }
+    updateHP(characters);
 
     if (battle == false & defeated.length == 3) {
         alert("You win!");
@@ -128,6 +133,9 @@ var characters = [obi, rey, boba, jarjar];
 var character, defender;
 var enemies = [];
 var defeated = [];
+
+// Set HP's
+updateHP(characters);
 
 // Game flow
 $(".character-card").on("click", function () {
