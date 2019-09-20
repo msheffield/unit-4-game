@@ -8,7 +8,16 @@ body {
     background-size: cover;
 }
 
-/* .card-img-top {
+h1 {
+    color: white;
+}
+
+#title {
+    position: fixed;
+    right: 25px;
+}
+
+.card-img-top {
     height: 150px;
     width: auto;
-} */
+}
