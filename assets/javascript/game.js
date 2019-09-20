@@ -6,15 +6,15 @@ Star Wars RPG Javascript
 var obi = {
     id: "#obi",
     hp: 100,
-    base_ad: 5,
-    ad: 5,
+    base_ad: 1,
+    ad: 1,
 }
 
 var jarjar = {
     id: "#jarjar",
     hp: 100,
     base_ad: 5,
-    ad: 5,
+    ad: 100,
 }
 
 var boba = {
@@ -57,6 +57,8 @@ function moveChar(id) {
         for (i = 0; i < characters.length; i++) {
             if (characters[i].id !== id) {
                 $(characters[i].id).appendTo("#enemies")
+                $(characters[i].id + " .card-body").css("background-color", "red")
+                $(characters[i].id + " p").css("color", "white");
                 enemies.push(characters[i])
                 console.log(characters[i].id + " put in enemies");
             }
@@ -87,6 +89,26 @@ function attack(attacker, defender) {
 function update() {
     console.log("update");
 
+    if (character.hp <= 0) {
+        alert("Game Over!");
+        // RESET //
+    }
+    else if (defender.hp <= 0) {
+        console.log(defender.id + " defeated");
+        $(defender.id).hide();
+        defeated.push(defender);
+        defender = null;
+        battle = false;
+
+    }
+
+    for (let i = 0; i < characters.length; i++) {
+        console.log(characters[i].id + " hp = " + characters[i].hp);
+    }
+
+    if (battle == false & defeated.length == 3) {
+        alert("You win!");
+    }
 }
 
 // ----------- GAME LOGIC -----------
@@ -114,5 +136,8 @@ $(".character-card").on("click", function () {
 });
 
 $("#attack-btn").on("click", function () {
-    attack(character, defender);
+    if (battle) {
+        attack(character, defender);
+        update();
+    }
 })
