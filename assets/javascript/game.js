@@ -56,7 +56,8 @@ function updateHP(characters) {
 // Moves characters between divs. If first character clicked, selects as character and moves enemies. Else if no current defender, moves to defender.
 function moveCharacter(id) {
     if (choosePlayerCharacter) {
-        $(id).appendTo("#character");
+        $(id).appendTo("#battle-bay");
+        $("#battle-bay").append('<div class="col-md-2" style="text-align: center; padding-top: 50px;"><h2>VS</h2></div>');
         character = findCharByID(characters, id);
         choosePlayerCharacter = false;
         console.log(id + " is character");
@@ -72,7 +73,7 @@ function moveCharacter(id) {
     }
     else if (!activeDefender) {
         if (id !== character.id) {
-            $(id).appendTo("#defender");
+            $(id).appendTo("#battle-bay");
             $(id + " .card-body").css("background-color", "black")
             activeDefender = true;
             defender = findCharByID(characters, id);
