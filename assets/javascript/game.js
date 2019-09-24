@@ -54,11 +54,11 @@ function updateHP(characters) {
 }
 
 // Moves characters between divs. If first character clicked, selects as character and moves enemies. Else if no current defender, moves to defender.
-function moveChar(id) {
-    if (chooseCharacter) {
+function moveCharacter(id) {
+    if (choosePlayerCharacter) {
         $(id).appendTo("#character");
         character = findCharByID(characters, id);
-        chooseCharacter = false;
+        choosePlayerCharacter = false;
         console.log(id + " is character");
         for (i = 0; i < characters.length; i++) {
             if (characters[i].id !== id) {
@@ -70,11 +70,11 @@ function moveChar(id) {
             }
         }
     }
-    else if (!battle) {
+    else if (!activeDefender) {
         if (id !== character.id) {
             $(id).appendTo("#defender");
             $(id + " .card-body").css("background-color", "black")
-            battle = true;
+            activeDefender = true;
             defender = findCharByID(characters, id);
             enemies.splice((enemies.indexOf(defender)), 1);
             console.log(defender.id + " is defender");
@@ -93,7 +93,7 @@ function attack(attacker, defender) {
 }
 
 // Updates HP displays and triggers events when a character's hp is 0 (endgame, defender defeated)
-function update() {
+function updateGameStatus() {
     console.log("update");
 
     if (character.hp <= 0) {
@@ -105,13 +105,13 @@ function update() {
         $(defender.id).hide();
         defeated.push(defender);
         defender = null;
-        battle = false;
+        activeDefender = false;
 
     }
 
     updateHP(characters);
 
-    if (battle == false & defeated.length == 3) {
+    if (activeDefender == false & defeated.length == 3) {
         alert("You win!");
     }
 }
@@ -125,8 +125,8 @@ var boba = boba;
 var jarjar = jarjar;
 
 // Initialize conditions
-var chooseCharacter = true;
-var battle = false;
+var choosePlayerCharacter = true;
+var activeDefender = false;
 
 // Initialize positions
 var characters = [obi, rey, boba, jarjar];
@@ -140,12 +140,12 @@ updateHP(characters);
 // Game flow
 $(".character-card").on("click", function () {
     id = genID(this.id);
-    moveChar(id);
+    moveCharacter(id);
 });
 
 $("#attack-btn").on("click", function () {
-    if (battle) {
+    if (activeDefender) {
         attack(character, defender);
-        update();
+        updateGameStatus();
     }
 })
